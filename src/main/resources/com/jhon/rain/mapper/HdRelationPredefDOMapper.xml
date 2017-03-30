@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jhon.rain.dao.HdRelationPredefDOMapper" >
+  <resultMap id="BaseResultMap" type="com.jhon.rain.model.HdRelationPredefDO" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="interaction_scenario_id" property="interactionScenarioId" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="action_predef_list" property="actionPredefList" jdbcType="VARCHAR" />
+    <result column="threshold_condition_predef_list" property="thresholdConditionPredefList" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, interaction_scenario_id, name, action_predef_list, threshold_condition_predef_list, 
+    description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_hd_relation_predef
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_hd_relation_predef
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jhon.rain.model.HdRelationPredefDO" >
+    insert into t_hd_relation_predef (id, interaction_scenario_id, name, 
+      action_predef_list, threshold_condition_predef_list, 
+      description)
+    values (#{id,jdbcType=BIGINT}, #{interactionScenarioId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{actionPredefList,jdbcType=VARCHAR}, #{thresholdConditionPredefList,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jhon.rain.model.HdRelationPredefDO" >
+    insert into t_hd_relation_predef
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="interactionScenarioId != null" >
+        interaction_scenario_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="actionPredefList != null" >
+        action_predef_list,
+      </if>
+      <if test="thresholdConditionPredefList != null" >
+        threshold_condition_predef_list,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="interactionScenarioId != null" >
+        #{interactionScenarioId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="actionPredefList != null" >
+        #{actionPredefList,jdbcType=VARCHAR},
+      </if>
+      <if test="thresholdConditionPredefList != null" >
+        #{thresholdConditionPredefList,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jhon.rain.model.HdRelationPredefDO" >
+    update t_hd_relation_predef
+    <set >
+      <if test="interactionScenarioId != null" >
+        interaction_scenario_id = #{interactionScenarioId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="actionPredefList != null" >
+        action_predef_list = #{actionPredefList,jdbcType=VARCHAR},
+      </if>
+      <if test="thresholdConditionPredefList != null" >
+        threshold_condition_predef_list = #{thresholdConditionPredefList,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jhon.rain.model.HdRelationPredefDO" >
+    update t_hd_relation_predef
+    set interaction_scenario_id = #{interactionScenarioId,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      action_predef_list = #{actionPredefList,jdbcType=VARCHAR},
+      threshold_condition_predef_list = #{thresholdConditionPredefList,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jhon.rain.dao.HdRulePredefDOMapper" >
+  <resultMap id="BaseResultMap" type="com.jhon.rain.model.HdRulePredefDO" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="html_code" property="htmlCode" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="is_default" property="isDefault" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, html_code, description, is_default
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_hd_rule_predef
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_hd_rule_predef
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jhon.rain.model.HdRulePredefDO" >
+    insert into t_hd_rule_predef (id, name, html_code, 
+      description, is_default)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{htmlCode,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{isDefault,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jhon.rain.model.HdRulePredefDO" >
+    insert into t_hd_rule_predef
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="htmlCode != null" >
+        html_code,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="isDefault != null" >
+        is_default,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="htmlCode != null" >
+        #{htmlCode,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefault != null" >
+        #{isDefault,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jhon.rain.model.HdRulePredefDO" >
+    update t_hd_rule_predef
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="htmlCode != null" >
+        html_code = #{htmlCode,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefault != null" >
+        is_default = #{isDefault,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jhon.rain.model.HdRulePredefDO" >
+    update t_hd_rule_predef
+    set name = #{name,jdbcType=VARCHAR},
+      html_code = #{htmlCode,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      is_default = #{isDefault,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

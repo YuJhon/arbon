@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jhon.rain.dao.HdScenarioPredefDOMapper" >
+  <resultMap id="BaseResultMap" type="com.jhon.rain.model.HdScenarioPredefDO" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="second_level_type" property="secondLevelType" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="iconurl_32" property="iconurl32" jdbcType="VARCHAR" />
+    <result column="iconurl_128" property="iconurl128" jdbcType="VARCHAR" />
+    <result column="url_mobile" property="urlMobile" jdbcType="VARCHAR" />
+    <result column="url_pc" property="urlPc" jdbcType="VARCHAR" />
+    <result column="config_url" property="configUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, type, second_level_type, description, iconurl_32, iconurl_128, url_mobile, 
+    url_pc, config_url
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_hd_scenario_predef
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_hd_scenario_predef
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jhon.rain.model.HdScenarioPredefDO" >
+    insert into t_hd_scenario_predef (id, name, type, 
+      second_level_type, description, iconurl_32, 
+      iconurl_128, url_mobile, url_pc, 
+      config_url)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{secondLevelType,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{iconurl32,jdbcType=VARCHAR}, 
+      #{iconurl128,jdbcType=VARCHAR}, #{urlMobile,jdbcType=VARCHAR}, #{urlPc,jdbcType=VARCHAR}, 
+      #{configUrl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jhon.rain.model.HdScenarioPredefDO" >
+    insert into t_hd_scenario_predef
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="secondLevelType != null" >
+        second_level_type,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="iconurl32 != null" >
+        iconurl_32,
+      </if>
+      <if test="iconurl128 != null" >
+        iconurl_128,
+      </if>
+      <if test="urlMobile != null" >
+        url_mobile,
+      </if>
+      <if test="urlPc != null" >
+        url_pc,
+      </if>
+      <if test="configUrl != null" >
+        config_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="secondLevelType != null" >
+        #{secondLevelType,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="iconurl32 != null" >
+        #{iconurl32,jdbcType=VARCHAR},
+      </if>
+      <if test="iconurl128 != null" >
+        #{iconurl128,jdbcType=VARCHAR},
+      </if>
+      <if test="urlMobile != null" >
+        #{urlMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="urlPc != null" >
+        #{urlPc,jdbcType=VARCHAR},
+      </if>
+      <if test="configUrl != null" >
+        #{configUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jhon.rain.model.HdScenarioPredefDO" >
+    update t_hd_scenario_predef
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="secondLevelType != null" >
+        second_level_type = #{secondLevelType,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="iconurl32 != null" >
+        iconurl_32 = #{iconurl32,jdbcType=VARCHAR},
+      </if>
+      <if test="iconurl128 != null" >
+        iconurl_128 = #{iconurl128,jdbcType=VARCHAR},
+      </if>
+      <if test="urlMobile != null" >
+        url_mobile = #{urlMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="urlPc != null" >
+        url_pc = #{urlPc,jdbcType=VARCHAR},
+      </if>
+      <if test="configUrl != null" >
+        config_url = #{configUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jhon.rain.model.HdScenarioPredefDO" >
+    update t_hd_scenario_predef
+    set name = #{name,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      second_level_type = #{secondLevelType,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      iconurl_32 = #{iconurl32,jdbcType=VARCHAR},
+      iconurl_128 = #{iconurl128,jdbcType=VARCHAR},
+      url_mobile = #{urlMobile,jdbcType=VARCHAR},
+      url_pc = #{urlPc,jdbcType=VARCHAR},
+      config_url = #{configUrl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
